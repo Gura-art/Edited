@@ -5,101 +5,350 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
   <title>GURA BOT WHATSAPP</title>
+  <meta name="description" content="Gura Bot adalah bot WhatsApp multifungsi yang siap membantu aktivitas Anda dengan berbagai fitur canggih. Nikmati kemudahan mengunduh media, membuat stiker, mengelola dan memantau grup, serta masih banyak fitur lainnya yang terus diperbarui untuk memberikan pengalaman terbaik.">
+  <meta name="keywords" content="WhatsApp bot">
+  <meta name="author" content="GuraBot">
+  <link rel="icon" href="https://i.ibb.co.com/Xf0g5Twm/IMG-20260704-WA0159.jpg" type="image/jpeg" />
+  <meta property="og:title" content="GURA BOT WHATSAPP" />
+  <meta property="og:description" content="Gura Bot adalah bot WhatsApp multifungsi yang siap membantu aktivitas Anda dengan berbagai fitur canggih. Nikmati kemudahan mengunduh media, membuat stiker, mengelola dan memantau grup, serta masih banyak fitur lainnya yang terus diperbarui untuk memberikan pengalaman terbaik." />
+  <meta property="og:image" content="https://i.ibb.co.com/Xf0g5Twm/IMG-20260704-WA0159.jpg" />
+  <meta property="og:url" content="https://" />
+  <meta property="og:type" content="website" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { 
-      theme: { 
-        extend: { 
-          colors: { 
-            primary: '#A3E635', // Hijau
-            secondary: '#FACC15', // Kuning
-            dark: '#0B0B0B', 
-            darker: '#000000' 
-          }, 
-          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Roboto Mono', 'monospace'] } 
-        } 
-      } 
-    }
+    tailwind.config = { theme: { extend: { colors: { primary: '#3B82F6', secondary: '#60A5FA', dark: '#0B0B0B', darker: '#000' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Roboto Mono', 'monospace'] } }
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0F172A" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
   <style>
-    html { scroll-behavior: smooth; }
-    body { background: linear-gradient(145deg, #14141f 0%, #0a0a10 100%); }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, #A3E635, #FACC15);
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none
+    }
+
+    body.swal2-shown:not(.swal2-no-backdrop) {
+      padding-right: 0!important;
+      overflow-y: scroll!important;
+    }
+
+    body.swal2-shown {
+      overflow-y: scroll!important;
+    }
+
+   .swal2-container {
+      overflow-y: hidden!important;
+    }
+
+    body {
+      overflow-y: scroll!important;
+      background: linear-gradient(145deg, #0F172A 0%, #1E3A8A 100%);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(59, 130, 246,.3);
+      border-radius: 10px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent
+    }
+
+   .clay-card {
+      background: #1E293B;
+      border-radius: 10px;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+   .clay-card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 40px -12px rgba(0, 0, 0, 0.6), inset 0 -2px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+   .clay-button {
+      background: linear-gradient(145deg, #2563EB, #1D4ED8);
+      border-radius: 10px;
+      box-shadow: 0 8px 16px -5px rgba(37, 99, 235, 0.4), inset 0 -2px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: all 0.2s ease;
+    }
+
+   .clay-button:hover {
+      background: linear-gradient(145deg, #1D4ED8, #1E40AF);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -6px rgba(37, 99, 235, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+   .clay-button:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 10px -3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+   .clay-icon {
+      background: #1E293B;
+      border-radius: 50%;
+      box-shadow: 0 6px 12px -4px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+   .clay-channel {
+      background: linear-gradient(145deg, #2563EB, #1D4ED8);
+      border-radius: 10px;
+      box-shadow: 0 8px 16px -5px rgba(37, 99, 235, 0.4), inset 0 -2px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+   .clay-channel:hover {
+      background: linear-gradient(145deg, #1D4ED8, #1E40AF);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px -6px rgba(37, 99, 235, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+   .gradient-text {
+      background: linear-gradient(90deg, #60A5FA, #3B82F6);
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent;
+      color: transparent
     }
-    
-    .clay-card { background: #1a1a2a; border-radius: 10px; box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5); transition: all 0.3s ease; }
-    .clay-card-hover:hover { transform: translateY(-6px); }
-    .clay-button { background: #22223b; border-radius: 10px; transition: all 0.2s ease; }
-    .clay-button:hover { background: #2a2a45; }
-    
-    .faq-content { max-height: 0; overflow: hidden; transition: max-height .3s ease-out; }
-    .faq-item.active .faq-content { max-height: 200px; }
-    
-    .section-divider { height: 2px; background: linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.3), transparent); margin: 1rem auto; max-width: 80%; }
-    .package-icon { font-size: 2rem; color: #A3E635; margin-bottom: 0.5rem; }
+
+   .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+      margin: 1rem auto;
+      max-width: 80%;
+      border-radius: 10px;
+    }
+
+   .faq-item.faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height.3s ease-out
+    }
+
+   .faq-item.active.faq-content {
+      max-height: 200px
+    }
+
+   .faq-donation.active.faq-content {
+      max-height: 1200px;
+    }
+
+   .faq-donation iframe {
+      height: 650px;
+    }
+
+    @media (min-width: 768px) {
+     .faq-donation iframe {
+        height: 720px;
+      }
+    }
+
+    @keyframes blink-glow {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        filter: blur(8px)
+      }
+
+      50% {
+        opacity: 0.6;
+        filter: blur(14px)
+      }
+    }
+
+   .swal-glass {
+      background: #1E293B!important;
+      backdrop-filter: blur(20px)!important;
+      border: 1px solid rgba(59, 130, 246, 0.2)!important;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)!important;
+      border-radius: 10px!important
+    }
+
+   .swal-title {
+      color: #fff!important;
+      font-weight: 600!important
+    }
+
+   .swal-text {
+      color: rgba(255, 255, 255,.8)!important
+    }
+
+   .swal-confirm {
+      background: linear-gradient(145deg, #2563EB, #1D4ED8)!important;
+      box-shadow: 0 6px 12px -4px rgba(37, 99, 235, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.15)!important;
+      color: #fff!important;
+      border: none!important;
+      border-radius: 10px!important;
+      padding: 10px 18px!important
+    }
+
+   .package-icon {
+      font-size: 2rem;
+      color: #60A5FA;
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 
 <body class="text-gray-100 font-sans">
-  <header class="fixed w-full z-50 p-3 text-center" style="background: #0f0f18;">
-    <div class="max-w-4xl mx-auto"><h1 class="text-xl font-bold gradient-text">GURA BOT WHATSAPP</h1></div>
+  <header class="fixed w-full z-50 p-3 text-center" style="background: #0F172A; box-shadow: 0 8px 20px -8px rgba(0,0,0,0.5), inset 0 -1px 0 rgba(255,255,255,0.03);">
+    <div class="max-w-4xl mx-auto flex items-center justify-center">
+      <h1 class="text-xl font-bold gradient-text tracking-tight">GURA BOT WHATSAPP</h1>
+    </div>
   </header>
-  
-  <div class="h-20"></div>
-  
-  <main class="max-w-4xl mx-auto px-4 pb-10">
-    <section class="py-1 text-center">
-      <div class="relative mx-auto w-32 h-32 mb-6">
-        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-[#A3E635] to-[#FACC15] blur-xl opacity-20"></div>
-        <img src="https://i.ibb.co.com/Xf0g5Twm/IMG-20260704-WA0159.jpg" class="w-full h-full rounded-full object-cover border-2 border-[#A3E635]">
+  <div class="h-16"></div>
+  <div id="landing-content">
+    <main class="max-w-4xl mx-auto px-4 pb-10">
+      <section class="py-1 text-center">
+        <div class="relative mx-auto w-32 h-32 mb-6">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-xl opacity-30"></div>
+          <div class="clay-icon w-full h-full flex items-center justify-center overflow-hidden p-1.5">
+            <img src="https://i.ibb.co.com/Xf0g5Twm/IMG-20260704-WA0159.jpg" class="relative w-full h-full rounded-full object-cover border-0">
+          </div>
+        </div>
+        <h2 class="text-2xl font-bold mb-2" style="text-shadow: 0 2px 5px rgba(0,0,0,0.5);">GURA BOT</h2>
+        <p class="text-gray-400 text-sm max-w-md mx-auto mb-6 leading-relaxed">Gura Bot adalah bot WhatsApp multifungsi yang siap membantu aktivitas Anda dengan berbagai fitur canggih. Nikmati kemudahan mengunduh media, membuat stiker, mengelola dan memantau grup, serta masih banyak fitur lainnya yang terus diperbarui untuk memberikan pengalaman terbaik.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
+          <a href="https://wa.me/6285162989723" class="clay-button flex-1 text-white font-medium py-2.5 px-4 transition duration-300 flex items-center justify-center gap-2"><i class="fab fa-whatsapp"></i>KONTAK OWNER</a>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+      <section class="py-1">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold gradient-text inline-flex items-center gap-2"><i class="fas fa-tags"></i><span>Paket Langganan</span></h2>
+          <p class="text-gray-400 text-sm mt-2">Pilih Paket Langganan</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="clay-card p-5 clay-card-hover text-center">
+            <i class="fas fa-rocket package-icon"></i>
+            <h3 class="font-bold text-lg mb-1">Basic</h3>
+            <p class="text-primary text-2xl font-mono font-bold mb-4">Rp10.000</p>
+            <ul class="text-gray-300 text-sm space-y-2 mb-5 text-left">
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Sewa Bot 14 Hari</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Premium 14 Hari</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Aktif 24 jam</span></li>
+            </ul>
+            <a href="https://wa.me/6285162989723?text=Halo%20admin,%20saya%20ingin%20memesan%20paket%20Basic%20GuraBot" class="clay-button block w-full text-white font-medium py-2 px-4 transition duration-300 text-center">BELI</a>
+          </div>
+          <div class="clay-card p-5 clay-card-hover relative overflow-hidden text-center" style="background: #1E293B; box-shadow: 0 20px 35px -10px rgba(0,0,0,0.6), inset 0 -2px 0 rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 0 1px rgba(59,130,246,0.4);">
+            <div class="absolute top-0 -right-1 bg-primary/90 rounded-bl-md text-white font-bold text-xs px-3 py-0.5"><i class="fas fa-star"></i> recommended</div>
+            <i class="fas fa-crown package-icon" style="color: #60A5FA;"></i>
+            <h3 class="font-bold text-lg mb-1">Pro</h3>
+            <p class="text-primary text-2xl font-mono font-bold mb-4">Rp20.000</p>
+            <ul class="text-gray-300 text-sm space-y-2 mb-5 text-left">
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Sewa Bot 30 Hari</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Premium 30 Hari</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Aktif 24 jam</span></li>
+            </ul>
+            <a href="https://wa.me/6285162989723?text=Halo%20admin,%20saya%20ingin%20memesan%20paket%20Pro%20GuraBot" class="clay-button block w-full text-white font-medium py-2 px-4 transition duration-300 text-center">BELI</a>
+          </div>
+          <div class="clay-card p-5 clay-card-hover text-center">
+            <i class="fas fa-gem package-icon"></i>
+            <h3 class="font-bold text-lg mb-1">Premium</h3>
+            <p class="text-primary text-2xl font-mono font-bold mb-4">Rp40.000</p>
+            <ul class="text-gray-300 text-sm space-y-2 mb-5 text-left">
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Sewa Bot 30 Hari</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Premium 5 Admin Group</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-primary mt-0.5"></i><span>Aktif 24 jam</span></li>
+            </ul>
+            <a href="https://wa.me/6285162989723?text=Halo%20admin,%20saya%20ingin%20memesan%20paket%20Premium%20GuraBot" class="clay-button block w-full text-white font-medium py-2 px-4 transition duration-300 text-center">BELI</a>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+      <section class="py-1">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold gradient-text inline-flex items-center gap-2"><i class="fas fa-question-circle"></i><span>Pertanyaan Umum</span></h2>
+          <p class="text-gray-400 text-sm mt-2">Pertanyaan Yang Sering Kami Dapat</p>
+        </div>
+        <div class="space-y-3" id="faq-container">
+          <div class="faq-item clay-card rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-3 text-left">
+              <div class="flex items-center gap-3">
+                <div class="clay-icon w-5 h-5 flex items-center justify-center text-primary text-xs"><i class="fas fa-question"></i></div>
+                <span class="text-sm font-medium">Fitur Apa Saja Yang Dapat Kami Akses?</span>
+              </div>
+              <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content px-3">
+              <div class="pl-8 pr-3 pb-3 pt-1 text-gray-300 text-xs">Kamu Dapat Mengakses Banyak Fitur Seperti Fitur Group, Sticker, Tools, Downloader, Textmaker Dan Lainnya.</div>
+            </div>
+          </div>
+          <div class="faq-item clay-card rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-3 text-left">
+              <div class="flex items-center gap-3">
+                <div class="clay-icon w-5 h-5 flex items-center justify-center text-primary text-xs"><i class="fas fa-question"></i></div>
+                <span class="text-sm font-medium">Apakah Kami Dapat Mengorder Lebih Dari 1 Group?</span>
+              </div>
+              <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content px-3">
+              <div class="pl-8 pr-3 pb-3 pt-1 text-gray-300 text-xs">Ya, Kamu bisa mengorder lebih dari 1 group dan juga bisa mengorder lebih dari 30 Hari.</div>
+            </div>
+          </div>
+          <div class="faq-item clay-card rounded-2xl overflow-hidden">
+            <button class="w-full flex items-center justify-between p-3 text-left">
+              <div class="flex items-center gap-3">
+                <div class="clay-icon w-5 h-5 flex items-center justify-center text-primary text-xs"><i class="fas fa-question"></i></div>
+                <span class="text-sm font-medium">Apakah Ada Balance Gratis/Kode Redeem?</span>
+              </div>
+              <i class="fas fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content px-3">
+              <div class="pl-8 pr-3 pb-3 pt-1 text-gray-300 text-xs">Ya. kami juga beberapa kali berbagi balance gratis saat ada hari yang memperingati sesuatu/sebagai hadiah.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+      <div class="text-center mt-8">
+        <a href="#" onclick="handleChannel(event)" class="inline-flex items-center gap-2 text-white font-medium py-3 px-6 text-sm rounded-full transition-all duration-300 relative group overflow-hidden clay-channel">
+          <span class="relative z-10 flex items-center gap-2"><i class="fab fa-whatsapp text-xs"></i><span>Channel WhatsApp</span></span>
+        </a>
       </div>
-      <h2 class="text-2xl font-bold mb-2">GURA BOT</h2>
-      <p class="text-gray-400 text-sm max-w-md mx-auto mb-6">Gura Bot adalah bot WhatsApp multifungsi yang siap membantu aktivitas Anda.</p>
-      <a href="https://wa.me/6285162989723" class="clay-button inline-block py-2.5 px-6 font-medium"><i class="fab fa-whatsapp"></i> KONTAK OWNER</a>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="py-1">
-      <div class="text-center mb-8"><h2 class="text-2xl font-bold gradient-text">Paket Langganan</h2></div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="clay-card p-5 clay-card-hover text-center">
-          <i class="fas fa-rocket package-icon"></i>
-          <h3 class="font-bold text-lg">Basic</h3>
-          <p class="text-primary text-2xl font-bold mb-4">Rp10.000</p>
-          <a href="#" class="clay-button block w-full py-2">BELI</a>
+      <footer class="text-center py-2 text-gray-500 text-sm mt-10">
+        <div class="max-w-4xl mx-auto px-4">
+          <p onclick="window.location.href='https://wa.me/6285162989723';" class="cursor-pointer hover:text-gray-300 transition">&copy; <span id="year"></span> GuraBot. All rights reserved.</p>
         </div>
-        <div class="clay-card p-5 clay-card-hover text-center border border-[#FACC15]">
-          <i class="fas fa-crown package-icon text-[#FACC15]"></i>
-          <h3 class="font-bold text-lg">Pro</h3>
-          <p class="text-secondary text-2xl font-bold mb-4">Rp20.000</p>
-          <a href="#" class="clay-button block w-full py-2">BELI</a>
-        </div>
-        <div class="clay-card p-5 clay-card-hover text-center">
-          <i class="fas fa-gem package-icon"></i>
-          <h3 class="font-bold text-lg">Premium</h3>
-          <p class="text-primary text-2xl font-bold mb-4">Rp40.000</p>
-          <a href="#" class="clay-button block w-full py-2">BELI</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
+      </footer>
+    </main>
+  </div>
   <script>
+    NProgress.start()
+    window.addEventListener('load', () => NProgress.done())
+    document.getElementById("year").textContent = new Date().getFullYear()
     document.querySelectorAll('.faq-item').forEach(item => {
       item.querySelector('button').addEventListener('click', () => {
-        item.classList.toggle('active');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+        if (!isActive) item.classList.add('active')
       })
-    });
+    })
+
+    function handleChannel(e) {
+      e.preventDefault();
+      const channelURL = "https://whatsapp.com/channel/0029Vacy03P9sBIHJ6bq0B3x";
+      window.open(channelURL, '_blank');
+    }
   </script>
 </body>
+
 </html>
