@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+  <title>GURA BOT WHATSAPP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { 
+      theme: { 
+        extend: { 
+          colors: { 
+            primary: '#A3E635', // Hijau
+            secondary: '#FACC15', // Kuning
+            dark: '#0B0B0B', 
+            darker: '#000000' 
+          }, 
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Roboto Mono', 'monospace'] } 
+        } 
+      } 
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" />
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: linear-gradient(145deg, #14141f 0%, #0a0a10 100%); }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #A3E635, #FACC15);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .clay-card { background: #1a1a2a; border-radius: 10px; box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5); transition: all 0.3s ease; }
+    .clay-card-hover:hover { transform: translateY(-6px); }
+    .clay-button { background: #22223b; border-radius: 10px; transition: all 0.2s ease; }
+    .clay-button:hover { background: #2a2a45; }
+    
+    .faq-content { max-height: 0; overflow: hidden; transition: max-height .3s ease-out; }
+    .faq-item.active .faq-content { max-height: 200px; }
+    
+    .section-divider { height: 2px; background: linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.3), transparent); margin: 1rem auto; max-width: 80%; }
+    .package-icon { font-size: 2rem; color: #A3E635; margin-bottom: 0.5rem; }
+  </style>
+</head>
+
+<body class="text-gray-100 font-sans">
+  <header class="fixed w-full z-50 p-3 text-center" style="background: #0f0f18;">
+    <div class="max-w-4xl mx-auto"><h1 class="text-xl font-bold gradient-text">GURA BOT WHATSAPP</h1></div>
+  </header>
+  
+  <div class="h-20"></div>
+  
+  <main class="max-w-4xl mx-auto px-4 pb-10">
+    <section class="py-1 text-center">
+      <div class="relative mx-auto w-32 h-32 mb-6">
+        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-[#A3E635] to-[#FACC15] blur-xl opacity-20"></div>
+        <img src="https://i.ibb.co.com/Xf0g5Twm/IMG-20260704-WA0159.jpg" class="w-full h-full rounded-full object-cover border-2 border-[#A3E635]">
+      </div>
+      <h2 class="text-2xl font-bold mb-2">GURA BOT</h2>
+      <p class="text-gray-400 text-sm max-w-md mx-auto mb-6">Gura Bot adalah bot WhatsApp multifungsi yang siap membantu aktivitas Anda.</p>
+      <a href="https://wa.me/6285162989723" class="clay-button inline-block py-2.5 px-6 font-medium"><i class="fab fa-whatsapp"></i> KONTAK OWNER</a>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="py-1">
+      <div class="text-center mb-8"><h2 class="text-2xl font-bold gradient-text">Paket Langganan</h2></div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="clay-card p-5 clay-card-hover text-center">
+          <i class="fas fa-rocket package-icon"></i>
+          <h3 class="font-bold text-lg">Basic</h3>
+          <p class="text-primary text-2xl font-bold mb-4">Rp10.000</p>
+          <a href="#" class="clay-button block w-full py-2">BELI</a>
+        </div>
+        <div class="clay-card p-5 clay-card-hover text-center border border-[#FACC15]">
+          <i class="fas fa-crown package-icon text-[#FACC15]"></i>
+          <h3 class="font-bold text-lg">Pro</h3>
+          <p class="text-secondary text-2xl font-bold mb-4">Rp20.000</p>
+          <a href="#" class="clay-button block w-full py-2">BELI</a>
+        </div>
+        <div class="clay-card p-5 clay-card-hover text-center">
+          <i class="fas fa-gem package-icon"></i>
+          <h3 class="font-bold text-lg">Premium</h3>
+          <p class="text-primary text-2xl font-bold mb-4">Rp40.000</p>
+          <a href="#" class="clay-button block w-full py-2">BELI</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('button').addEventListener('click', () => {
+        item.classList.toggle('active');
+      })
+    });
+  </script>
+</body>
+</html>
